@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Plan Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input, button {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📖 Study Plan Generator</h1>
+        
+        <form method="POST">
+            <label for="subjects">Subjects (comma-separated):</label>
+            <input type="text" id="subjects" name="subjects" required>
+
+            <label for="study_hours">Study Hours per Day:</label>
+            <input type="number" id="study_hours" name="study_hours" min="1" required>
+
+            <label for="exam_date">Exam Date:</label>
+            <input type="date" id="exam_date" name="exam_date" required>
+
+            <button type="submit">Generate Plan</button>
+        </form>
+
+        {% if study_plan %}
+            <h2>📌 Your Structured Study Plan</h2>
+            <div>
+                {{ study_plan | safe }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
